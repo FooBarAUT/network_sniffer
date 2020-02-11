@@ -3,7 +3,7 @@ import socket
 
 
 def get_mac_from_ip(ip):
-    mac = get_mac_address(ip)
+    mac = get_mac_address(ip=ip)
     return mac
 
 
