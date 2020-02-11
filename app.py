@@ -7,7 +7,7 @@ choice = int(
     input("\nChoose:\n1 - full (1-254) or\n2 - partial mode (custom range)\n\n|> "))
 
 if (choice == 1):
-    results = ping.get_confirmed_adresses("1", "254")
+    results = ping.get_confirmed_adresses(1, 254)
 elif (choice == 2):
     start = int(input("\nEnter the first adress to scan: "))
     end = int(input("Enter the last adress: "))
@@ -22,7 +22,7 @@ for ip in results:
     mac = macadress.get_mac_from_ip(ip)
     hostname = macadress.get_hostname(ip)
 
-    print("\n{} has hostname {} and MAC adress {}.\n"
+    print("\n{} has hostname '{}' and MAC adress '{}'."
           .format(ip, hostname[0], mac))
 
 endtime = datetime.now()
