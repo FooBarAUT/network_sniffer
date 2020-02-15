@@ -8,5 +8,9 @@ def get_mac_from_ip(ip):
 
 
 def get_hostname(ip):
-    hostname = socket.gethostbyaddr(ip)
+    try:
+        hostname = socket.gethostbyaddr(ip)
+    except Exception:
+        hostname = ["None"]
+
     return hostname

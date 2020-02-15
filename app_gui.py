@@ -18,14 +18,20 @@ def validate_input(number):
         pass
 
 
+def print_to_box(results):
+    for ip in results:
+        hostname = macadress.get_hostname(ip)
+        tbox.insert(
+            tkinter.END, "{}\nHostname: {}\n\n".format(ip, hostname[0]))
+
+
 def partial():
     tbox.delete(1.0, tkinter.END)
     start = validate_input(spin1.get())
     end = validate_input(spin2.get())
     if(start and end):
         results = ping.get_confirmed_adresses(start, end)
-        for ip in results:
-            tbox.insert(tkinter.END, ip + "\n")
+        print_to_box(results)
     else:
         pass
 
@@ -33,17 +39,16 @@ def partial():
 def full():
     tbox.delete(1.0, tkinter.END)
     results = ping.get_confirmed_adresses(1, 254)
-    for ip in results:
-        tbox.insert(tkinter.END, ip + "\n")
+    print_to_box(results)
 
 
 window = tkinter.Tk()
 
-window.title("Welcome to FooBarAUT's app")
+window.title("network_sniffer")
 window.geometry("650x200")
 
 sbar = tkinter.Scrollbar(window)
-tbox = tkinter.Text(window, height=4, width=15)
+tbox = tkinter.Text(window, height=4, width=35)
 sbar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
 tbox.pack(side=tkinter.LEFT, fill=tkinter.Y)
 sbar.config(command=tbox.yview)
