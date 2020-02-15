@@ -1,4 +1,6 @@
+from random import randint
 import platform
+import time
 import os
 
 
@@ -17,6 +19,8 @@ def get_confirmed_adresses(start, end):
 
     for i in range(start, (end + 1)):
         ip = "192.168.0." + str(i)
+        print("\nSleeping ...\n")
+        time.sleep(randint(1, 5))
         response = ping_ip(ip)
 
         if response == 0:
