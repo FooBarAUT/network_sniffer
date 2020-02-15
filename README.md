@@ -1,7 +1,7 @@
 # MAC adress sniffer
 
 This is a little freetime project in Python.\
-This script pings all IP's in the range the user provides and reports all back that appear to be alive.
+This script pings all IP's in the range the user provides or in the range from 1 to 254 and reports all back that appear to be alive.
 
 ## Installation
 
@@ -13,10 +13,16 @@ pip install -r requirements.txt
 
 ## Usage
 
-Run `app.py` with python3:
+For CLI version run `app.py` with python3:
 
 ```bash
 python3 app.py
+```
+
+If you prefer a GUI run `app_gui.py` with python3:
+
+```bash
+python3 app_gui.py
 ```
 
 ## Contributing
