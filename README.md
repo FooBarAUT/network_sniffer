@@ -28,7 +28,7 @@ python3 app_gui.py
 **Full IP range**
 
 - CLI-option 1
-- scans all IP's from x.x.x.1 to x.x.x.254)
+- scans all IP's from 192.168.0.1 to 192.168.0.254)
 
 **Custom IP range**
 
@@ -37,7 +37,7 @@ python3 app_gui.py
 
 **Keep in mind:**\
 Between each ping there is a random sleep-time of up to 5 seconds to not flood the network.\
-Therefore a full scan or a custom scan with a large range can potentially take a **long** time!s
+Therefore a full scan or a custom scan with a large range can potentially take a **long** time!
 
 ## Contributing
 
