@@ -40,7 +40,7 @@ def full():
 window = tkinter.Tk()
 
 window.title("Welcome to FooBarAUT's app")
-window.geometry("600x200")
+window.geometry("650x200")
 
 sbar = tkinter.Scrollbar(window)
 tbox = tkinter.Text(window, height=4, width=15)
@@ -61,25 +61,32 @@ tab_control.add(tab2, text='Full IP range')
 lbl1 = tkinter.Label(tab1, text="Custom IP range", font=("Arial Bold", 30))
 lbl1.grid(column=0, row=0)
 
-spin1 = tkinter.Spinbox(tab1, from_=1, to=253, width=5)
-spin1.grid(column=0, row=1)
-spin2 = tkinter.Spinbox(tab1, from_=2, to=254, width=5)
-spin2.grid(column=1, row=1)
+fromLbl = tkinter.Label(tab1, text="From: ")
+fromLbl.grid(column=0, row=1, sticky='W')
+spin1 = tkinter.Spinbox(tab1, from_=1, to=253)
+spin1.grid(column=0, row=1, sticky='E')
+
+toLbl = tkinter.Label(tab1, text="To: ")
+toLbl.grid(column=0, row=2, sticky='W')
+spin2 = tkinter.Spinbox(tab1, from_=2, to=254)
+spin2.grid(column=0, row=2, sticky='E')
 
 
-btn1 = tkinter.Button(tab1, text="Click Me!",
+btn1 = tkinter.Button(tab1, text="Start scan",
                       bg="lightgreen", fg="black", command=partial)
-btn1.grid(column=2, row=1)
+btn1.grid(column=0, row=3)
 # -- end custom IP range tab -- #
 
 # -- begin full IP range tab -- #
-lbl2 = tkinter.Label(tab2, text="Full IP range!!", font=("Arial Bold", 35))
+lbl2 = tkinter.Label(tab2, text="Full IP range", font=("Arial Bold", 35))
 lbl2.grid(column=0, row=0)
 
+infoLbl = tkinter.Label(tab2, text="This is going to take a LONG time!")
+infoLbl.grid(column=0, row=1)
 
-btn2 = tkinter.Button(tab2, text="Click Me!",
+btn2 = tkinter.Button(tab2, text="Start scan",
                       bg="lightgreen", fg="black", command=full)
-btn2.grid(column=1, row=1)
+btn2.grid(column=0, row=2)
 # -- end full IP range tab -- #
 
 tab_control.pack(expand=1, fill='both')
