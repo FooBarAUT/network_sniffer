@@ -19,24 +19,35 @@ def validate_input(number):
 
 
 def partial():
+    tbox.delete(1.0, tkinter.END)
     start = validate_input(spin1.get())
     end = validate_input(spin2.get())
     if(start and end):
         results = ping.get_confirmed_adresses(start, end)
-        lbl1.configure(text=results)
+        for ip in results:
+            tbox.insert(tkinter.END, ip + "\n")
     else:
         pass
 
 
 def full():
+    tbox.delete(1.0, tkinter.END)
     results = ping.get_confirmed_adresses(1, 254)
-    lbl2.configure(text=results)
+    for ip in results:
+        tbox.insert(tkinter.END, ip + "\n")
 
 
 window = tkinter.Tk()
 
 window.title("Welcome to FooBarAUT's app")
-window.geometry("500x300")
+window.geometry("600x200")
+
+sbar = tkinter.Scrollbar(window)
+tbox = tkinter.Text(window, height=4, width=15)
+sbar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+tbox.pack(side=tkinter.LEFT, fill=tkinter.Y)
+sbar.config(command=tbox.yview)
+tbox.config(yscrollcommand=sbar.set)
 
 tab_control = ttk.Notebook(window)
 
