@@ -29,8 +29,10 @@ def partial():
     tbox.delete(1.0, tkinter.END)
     start = validate_input(spin1.get())
     end = validate_input(spin2.get())
+    safe = checkboxValue.get()
+
     if(start and end):
-        results = ping.get_confirmed_adresses(start, end)
+        results = ping.get_confirmed_adresses(start, end, safe)
         print_to_box(results)
     else:
         pass
@@ -38,7 +40,8 @@ def partial():
 
 def full():
     tbox.delete(1.0, tkinter.END)
-    results = ping.get_confirmed_adresses(1, 254)
+    safe = checkboxValue.get()
+    results = ping.get_confirmed_adresses(1, 254, safe)
     print_to_box(results)
 
 
@@ -76,10 +79,14 @@ toLbl.grid(column=0, row=2, sticky='W')
 spin2 = tkinter.Spinbox(tab1, from_=2, to=254)
 spin2.grid(column=0, row=2, sticky='E')
 
+checkboxValue = tkinter.BooleanVar()
+checkboxValue.set(True)
+checkbox = tkinter.Checkbutton(tab1, text='Safe?', var=checkboxValue)
+checkbox.grid(column=0, row=3)
 
 btn1 = tkinter.Button(tab1, text="Start scan",
                       bg="lightgreen", fg="black", command=partial)
-btn1.grid(column=0, row=3)
+btn1.grid(column=0, row=4)
 # -- end custom IP range tab -- #
 
 # -- begin full IP range tab -- #
