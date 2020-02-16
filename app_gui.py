@@ -50,12 +50,12 @@ def full():
 window = tkinter.Tk()
 
 window.title("network_sniffer")
-window.geometry("650x200")
+window.geometry("650x300")
 
 sbar = tkinter.Scrollbar(window)
 tbox = tkinter.Text(window, height=4, width=35)
 sbar.pack(side=tkinter.RIGHT, fill=tkinter.Y)
-tbox.pack(side=tkinter.LEFT, fill=tkinter.Y)
+tbox.pack(side=tkinter.RIGHT, fill=tkinter.Y)
 sbar.config(command=tbox.yview)
 tbox.config(yscrollcommand=sbar.set)
 
@@ -98,9 +98,14 @@ lbl2.grid(column=0, row=0)
 infoLbl = tkinter.Label(tab2, text="This is going to take a LONG time!")
 infoLbl.grid(column=0, row=1)
 
+checkboxValue = tkinter.BooleanVar()
+checkboxValue.set(True)
+checkbox = tkinter.Checkbutton(tab2, text='Safe?', var=checkboxValue)
+checkbox.grid(column=0, row=2)
+
 btn2 = tkinter.Button(tab2, text="Start scan",
                       bg="lightgreen", fg="black", command=full)
-btn2.grid(column=0, row=2)
+btn2.grid(column=0, row=3)
 # -- end full IP range tab -- #
 
 tab_control.pack(expand=1, fill='both')
