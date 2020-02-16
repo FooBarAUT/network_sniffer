@@ -26,8 +26,8 @@ else:
         "\nInvalid choice!\nPlease choose either 1 (full) or 2 (partial mode).\n")
 
 for ip in results:
-    mac = macadress.get_mac_from_ip(ip)
     hostname = macadress.get_hostname(ip)
+    mac = macadress.get_mac_from_ip(ip)
 
     print("\n{}\nHostname: '{}'\nMAC-adress: {}"
           .format(ip, hostname[0], mac))

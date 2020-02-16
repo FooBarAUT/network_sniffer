@@ -21,8 +21,10 @@ def validate_input(number):
 def print_to_box(results):
     for ip in results:
         hostname = macadress.get_hostname(ip)
+        mac = macadress.get_mac_from_ip(ip)
         tbox.insert(
-            tkinter.END, "{}\nHostname: {}\n\n".format(ip, hostname[0]))
+            tkinter.END, "{}\nHostname: '{}'\nMAC-adress: {}\n"
+            .format(ip, hostname[0], mac))
 
 
 def partial():
