@@ -19,6 +19,8 @@ def validate_input(number):
 
 
 def print_to_box(results):
+    tbox.delete(1.0, tkinter.END)
+
     for ip in results:
         hostname = macadress.get_hostname(ip)
         mac = macadress.get_mac_from_ip(ip)
@@ -28,20 +30,15 @@ def print_to_box(results):
 
 
 def partial():
-    tbox.delete(1.0, tkinter.END)
     start = validate_input(spin1.get())
     end = validate_input(spin2.get())
-    safe = checkboxValue.get()
 
-    if(start and end):
-        results = ping.get_confirmed_adresses(start, end, safe)
-        print_to_box(results)
-    else:
-        pass
+    safe = checkboxValue.get()
+    results = ping.get_confirmed_adresses(start, end, safe)
+    print_to_box(results)
 
 
 def full():
-    tbox.delete(1.0, tkinter.END)
     safe = checkboxValue.get()
     results = ping.get_confirmed_adresses(1, 254, safe)
     print_to_box(results)
@@ -83,8 +80,8 @@ spin2.grid(column=0, row=2, sticky='E')
 
 checkboxValue = tkinter.BooleanVar()
 checkboxValue.set(True)
-checkbox = tkinter.Checkbutton(tab1, text='Safe?', var=checkboxValue)
-checkbox.grid(column=0, row=3)
+checkboxTab1 = tkinter.Checkbutton(tab1, text='Safe?', var=checkboxValue)
+checkboxTab1.grid(column=0, row=3)
 
 btn1 = tkinter.Button(tab1, text="Start scan",
                       bg="lightgreen", fg="black", command=partial)
@@ -98,10 +95,8 @@ lbl2.grid(column=0, row=0)
 infoLbl = tkinter.Label(tab2, text="This is going to take a LONG time!")
 infoLbl.grid(column=0, row=1)
 
-checkboxValue = tkinter.BooleanVar()
-checkboxValue.set(True)
-checkbox = tkinter.Checkbutton(tab2, text='Safe?', var=checkboxValue)
-checkbox.grid(column=0, row=2)
+checkboxTab2 = tkinter.Checkbutton(tab2, text='Safe?', var=checkboxValue)
+checkboxTab2.grid(column=0, row=2)
 
 btn2 = tkinter.Button(tab2, text="Start scan",
                       bg="lightgreen", fg="black", command=full)
